@@ -8,18 +8,74 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
+    @IBOutlet weak var imageView: UIImageView!
 
+    @IBOutlet weak var topTextField: UITextField!
+    
+    @IBOutlet weak var bottomTextField: UITextField!
+    
+    @IBAction func pickImage(sender: AnyObject) {
+        let imagePicker = UIImagePickerController()
+        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary){
+            imagePicker.sourceType = .PhotoLibrary
+            imagePicker.delegate = self
+            presentViewController(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func takePicture(sender: AnyObject) {
+        let imagePicker = UIImagePickerController()
+        if UIImagePickerController.isSourceTypeAvailable(.Camera){
+            imagePicker.sourceType = .Camera
+            imagePicker.delegate = self
+            presentViewController(imagePicker, animated: true, completion: nil)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        topTextField.delegate = self
+        bottomTextField.delegate = self
+        configTextField()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func configTextField(){
+        topTextField.text = "top"
+        bottomTextField.text = "bottom"
+        bottomTextField.textAlignment = .Center
+        topTextField.textAlignment = .Center
+        
+        let memeTextAttributes = [
+            NSStrokeColorAttributeName : UIColor.blackColor(),
+            NSForegroundColorAttributeName : UIColor.whiteColor(),
+            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSStrokeWidthAttributeName : -0.1
+        ]
+        topTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.defaultTextAttributes = memeTextAttributes
+    }
+    
+    //MARK: text field delegate
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.becomeFirstResponder()
+        textField.text = ""
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    //MARK: image picker controller delegate
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
+        dismissViewControllerAnimated(true, completion: nil)
+        imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        //imageView.contentMode = UIViewContentMode.ScaleAspectFit
     }
 
-
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
 
