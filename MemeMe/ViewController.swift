@@ -14,6 +14,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet weak var topTextField: UITextField!
     
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
     
     @IBAction func pickImage(sender: AnyObject) {
         let imagePicker = UIImagePickerController()
@@ -22,6 +23,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             imagePicker.delegate = self
             presentViewController(imagePicker, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func backToDefaultSetting(sender: AnyObject) {
+        topTextField.text = "top"
+        bottomTextField.text = "bottom"
+        imageView.image = nil
     }
     
     @IBAction func takePicture(sender: AnyObject) {
@@ -38,6 +45,18 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         topTextField.delegate = self
         bottomTextField.delegate = self
         configTextField()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if !UIImagePickerController.isSourceTypeAvailable(.Camera){
+            cameraButton.enabled = false
+        }
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 
     func configTextField(){
@@ -71,7 +90,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
         dismissViewControllerAnimated(true, completion: nil)
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        //imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        imageView.contentMode = UIViewContentMode.ScaleAspectFit
     }
 
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

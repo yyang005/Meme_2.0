@@ -21,16 +21,19 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="noV-iQ-3CN">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem title="Camera" width="121" id="jvJ-Ry-ZQ9">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="njK-d3-59B"/>
+                                    <barButtonItem systemItem="camera" id="HsL-lA-ekK">
                                         <connections>
-                                            <action selector="takePicture:" destination="BYZ-38-t0r" id="sd9-Ju-EWi"/>
+                                            <action selector="pickImage:" destination="BYZ-38-t0r" id="YJP-cN-d7Y"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Albunm" width="405" id="E2r-0G-Zk5">
+                                    <barButtonItem width="81" style="plain" systemItem="fixedSpace" id="TXd-bN-0aQ"/>
+                                    <barButtonItem title="Albunm" id="D7X-fS-Cw7">
                                         <connections>
-                                            <action selector="pickImage:" destination="BYZ-38-t0r" id="XYd-KN-peo"/>
+                                            <action selector="pickImage:" destination="BYZ-38-t0r" id="7Kv-OV-fed"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="bWj-ma-HjM"/>
                                 </items>
                                 <color key="barTintColor" red="0.87361611038394416" green="0.87361611038394416" blue="0.87361611038394416" alpha="0.72285017730496459" colorSpace="calibratedRGB"/>
                             </toolbar>
@@ -41,8 +44,13 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XbO-45-y0T">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem title="Share" width="84" id="mcN-fp-sRZ"/>
-                                    <barButtonItem title="Cancel" width="518" id="ZcQ-Kg-R21"/>
+                                    <barButtonItem systemItem="action" id="mcN-fp-sRZ"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="LiF-dY-2O6"/>
+                                    <barButtonItem title="Cancel" id="ZcQ-Kg-R21">
+                                        <connections>
+                                            <action selector="backToDefaultSetting:" destination="BYZ-38-t0r" id="Xf0-p3-nWd"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <color key="barTintColor" red="0.91049029232111689" green="0.91049029232111689" blue="0.91049029232111689" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
@@ -91,6 +99,7 @@
                     </view>
                     <connections>
                         <outlet property="bottomTextField" destination="ssR-Dk-p62" id="55d-NZ-yQu"/>
+                        <outlet property="cameraButton" destination="HsL-lA-ekK" id="2o5-lg-Niy"/>
                         <outlet property="imageView" destination="paj-8U-zBI" id="oJw-8c-cDu"/>
                         <outlet property="topTextField" destination="vTc-Mi-0Yl" id="jA5-6u-ACc"/>
                     </connections>
