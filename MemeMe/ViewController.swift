@@ -11,6 +11,9 @@ import UIKit
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     var curTextField = "top"
+    var memeObject: Meme?
+    
+    typealias UIActivityViewControllerCompletionWithItemsHandler = () -> Void
     
     @IBOutlet weak var imageView: UIImageView!
 
@@ -18,6 +21,22 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    
+    @IBAction func shareMemeImage(sender: AnyObject) {
+        let memeImg = generateMemedImage()
+        let meme = Meme(top: topTextField.text!, bottom: bottomTextField.text!, originalImg: imageView.image!, memeImg: memeImg)
+        var items = [Meme]()
+        items.append(meme)
+        
+        let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        activityController.completionWithItemsHandler = {
+            (activityType, completed, returnedItems, activityError) in
+            if completed {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
+        presentViewController(activityController, animated: true, completion: nil)
+    }
     
     @IBAction func pickImage(sender: AnyObject) {
         let imagePicker = UIImagePickerController()
@@ -70,8 +89,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     func configTextField(){
         topTextField.text = "top"
         bottomTextField.text = "bottom"
-        bottomTextField.textAlignment = .Center
-        topTextField.textAlignment = .Center
+        bottomTextField.contentHorizontalAlignment = .Center
+        topTextField.contentHorizontalAlignment = .Center
         
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
@@ -142,6 +161,24 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         return keyboardSize.CGRectValue().height
+    }
+    
+    //MARK: generate meme image
+    func generateMemedImage() -> UIImage {
+        
+        // TODO: Hide toolbar and navbar
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawViewHierarchyInRect(self.view.frame,
+            afterScreenUpdates: true)
+        let memedImage : UIImage =
+        UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        // TODO:  Show toolbar and navbar
+        
+        return memedImage
     }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC94022B1C814B3100162EBA /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC94022A1C814B3100162EBA /* Meme.swift */; };
 		DCD41CDE1C7FD88500201C90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD41CDD1C7FD88500201C90 /* AppDelegate.swift */; };
 		DCD41CE01C7FD88500201C90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD41CDF1C7FD88500201C90 /* ViewController.swift */; };
 		DCD41CE31C7FD88500201C90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCD41CE11C7FD88500201C90 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC94022A1C814B3100162EBA /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		DCD41CDA1C7FD88500201C90 /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCD41CDD1C7FD88500201C90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCD41CDF1C7FD88500201C90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				DCD41CDD1C7FD88500201C90 /* AppDelegate.swift */,
 				DCD41CDF1C7FD88500201C90 /* ViewController.swift */,
+				DC94022A1C814B3100162EBA /* Meme.swift */,
 				DCD41CE11C7FD88500201C90 /* Main.storyboard */,
 				DCD41CE41C7FD88500201C90 /* Assets.xcassets */,
 				DCD41CE61C7FD88500201C90 /* LaunchScreen.storyboard */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC94022B1C814B3100162EBA /* Meme.swift in Sources */,
 				DCD41CE01C7FD88500201C90 /* ViewController.swift in Sources */,
 				DCD41CDE1C7FD88500201C90 /* AppDelegate.swift in Sources */,
 			);
@@ -284,6 +288,7 @@
 				DCD41CEE1C7FD88500201C90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

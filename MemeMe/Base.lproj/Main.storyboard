@@ -44,7 +44,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XbO-45-y0T">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem systemItem="action" id="mcN-fp-sRZ"/>
+                                    <barButtonItem systemItem="action" id="mcN-fp-sRZ">
+                                        <connections>
+                                            <action selector="shareMemeImage:" destination="BYZ-38-t0r" id="J98-cw-8pw"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="LiF-dY-2O6"/>
                                     <barButtonItem title="Cancel" id="ZcQ-Kg-R21">
                                         <connections>
@@ -54,14 +58,14 @@
                                 </items>
                                 <color key="barTintColor" red="0.91049029232111689" green="0.91049029232111689" blue="0.91049029232111689" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="TOP" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="vTc-Mi-0Yl">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="vTc-Mi-0Yl">
                                 <rect key="frame" x="250" y="118" width="101" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ssR-Dk-p62">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ssR-Dk-p62">
                                 <rect key="frame" x="208" y="481" width="184" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -76,11 +80,15 @@
                             <constraint firstAttribute="trailingMargin" secondItem="XbO-45-y0T" secondAttribute="trailing" constant="-20" id="4ck-PP-erL"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="noV-iQ-3CN" secondAttribute="bottom" id="AnT-PR-Taf"/>
                             <constraint firstItem="paj-8U-zBI" firstAttribute="top" secondItem="XbO-45-y0T" secondAttribute="bottom" id="Br0-5o-Zpc"/>
-                            <constraint firstItem="vTc-Mi-0Yl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CBU-QW-1Wf"/>
+                            <constraint firstItem="vTc-Mi-0Yl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CBU-QW-1Wf">
+                                <variation key="widthClass=compact" constant="1"/>
+                            </constraint>
                             <constraint firstItem="noV-iQ-3CN" firstAttribute="top" secondItem="ssR-Dk-p62" secondAttribute="bottom" constant="45" id="DtM-bL-feg"/>
                             <constraint firstItem="vTc-Mi-0Yl" firstAttribute="leading" secondItem="ssR-Dk-p62" secondAttribute="leading" id="Knw-9r-2e4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="paj-8U-zBI" secondAttribute="trailing" id="LPS-QX-rC6"/>
-                            <constraint firstItem="ssR-Dk-p62" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MC5-q9-vKz"/>
+                            <constraint firstItem="ssR-Dk-p62" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MC5-q9-vKz">
+                                <variation key="widthClass=compact" constant="1"/>
+                            </constraint>
                             <constraint firstItem="XbO-45-y0T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="PRQ-TF-9B6"/>
                             <constraint firstItem="paj-8U-zBI" firstAttribute="top" secondItem="XbO-45-y0T" secondAttribute="bottom" id="QVq-my-wp4"/>
                             <constraint firstItem="paj-8U-zBI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="SMe-4r-Pg8"/>
