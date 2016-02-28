@@ -24,7 +24,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="njK-d3-59B"/>
                                     <barButtonItem systemItem="camera" id="HsL-lA-ekK">
                                         <connections>
-                                            <action selector="pickImage:" destination="BYZ-38-t0r" id="YJP-cN-d7Y"/>
+                                            <action selector="takePicture:" destination="BYZ-38-t0r" id="FfB-c5-PZS"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="81" style="plain" systemItem="fixedSpace" id="TXd-bN-0aQ"/>
@@ -58,14 +58,14 @@
                                 </items>
                                 <color key="barTintColor" red="0.91049029232111689" green="0.91049029232111689" blue="0.91049029232111689" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="vTc-Mi-0Yl">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="vTc-Mi-0Yl">
                                 <rect key="frame" x="250" y="118" width="101" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ssR-Dk-p62">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ssR-Dk-p62">
                                 <rect key="frame" x="208" y="481" width="184" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -92,7 +92,9 @@
                             <constraint firstItem="XbO-45-y0T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="PRQ-TF-9B6"/>
                             <constraint firstItem="paj-8U-zBI" firstAttribute="top" secondItem="XbO-45-y0T" secondAttribute="bottom" id="QVq-my-wp4"/>
                             <constraint firstItem="paj-8U-zBI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="SMe-4r-Pg8"/>
-                            <constraint firstItem="vTc-Mi-0Yl" firstAttribute="top" secondItem="XbO-45-y0T" secondAttribute="bottom" constant="74" id="UhS-6y-roJ"/>
+                            <constraint firstItem="vTc-Mi-0Yl" firstAttribute="top" secondItem="XbO-45-y0T" secondAttribute="bottom" constant="74" id="UhS-6y-roJ">
+                                <variation key="widthClass=compact" constant="45"/>
+                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="noV-iQ-3CN" secondAttribute="trailing" constant="-20" id="cph-jB-Ex6"/>
                             <constraint firstItem="vTc-Mi-0Yl" firstAttribute="trailing" secondItem="ssR-Dk-p62" secondAttribute="trailing" id="ctS-Ho-M2V"/>
                             <constraint firstItem="noV-iQ-3CN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="dYv-am-cuX"/>
@@ -106,9 +108,12 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="bottomBar" destination="noV-iQ-3CN" id="hBF-IL-96e"/>
                         <outlet property="bottomTextField" destination="ssR-Dk-p62" id="55d-NZ-yQu"/>
                         <outlet property="cameraButton" destination="HsL-lA-ekK" id="2o5-lg-Niy"/>
                         <outlet property="imageView" destination="paj-8U-zBI" id="oJw-8c-cDu"/>
+                        <outlet property="shareButton" destination="mcN-fp-sRZ" id="t8Y-ye-f1M"/>
+                        <outlet property="topBar" destination="XbO-45-y0T" id="LAD-f1-wnZ"/>
                         <outlet property="topTextField" destination="vTc-Mi-0Yl" id="jA5-6u-ACc"/>
                     </connections>
                 </viewController>

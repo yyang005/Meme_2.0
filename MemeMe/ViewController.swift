@@ -7,35 +7,34 @@
 //
 
 import UIKit
-//import Foundation
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     var curTextField = "top"
     var memeObject: Meme?
     
-    typealias UIActivityViewControllerCompletionWithItemsHandler = () -> Void
-    
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
 
     @IBOutlet weak var topTextField: UITextField!
     
+    @IBOutlet weak var topBar: UIToolbar!
+    @IBOutlet weak var bottomBar: UIToolbar!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
     @IBAction func shareMemeImage(sender: AnyObject) {
         let memeImg = generateMemedImage()
-        let meme = Meme(top: topTextField.text!, bottom: bottomTextField.text!, originalImg: imageView.image!, memeImg: memeImg)
-        var items = [Meme]()
-        items.append(meme)
         
-        let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        activityController.completionWithItemsHandler = {
+        let avc = UIActivityViewController(activityItems: [memeImg], applicationActivities:nil)
+        presentViewController(avc, animated: true, completion: nil)
+        
+        avc.completionWithItemsHandler = {
             (activityType, completed, returnedItems, activityError) in
             if completed {
+                self.memeObject = Meme(top: self.topTextField.text!, bottom: self.bottomTextField.text!, originalImg: self.imageView.image!, memeImg: memeImg)
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
-        presentViewController(activityController, animated: true, completion: nil)
     }
     
     @IBAction func pickImage(sender: AnyObject) {
@@ -48,9 +47,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     @IBAction func backToDefaultSetting(sender: AnyObject) {
-        topTextField.text = "top"
-        bottomTextField.text = "bottom"
-        imageView.image = nil
+        resetUI()
     }
     
     @IBAction func takePicture(sender: AnyObject) {
@@ -75,6 +72,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         if !UIImagePickerController.isSourceTypeAvailable(.Camera){
             cameraButton.enabled = false
         }
+        if imageView.image == nil{
+            shareButton.enabled = false
+        }else{
+            shareButton.enabled = true
+        }
         subscribeToKeyboardNotifications()
     }
     
@@ -84,6 +86,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    func resetUI(){
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        imageView.image = nil
+        shareButton.enabled = false
     }
 
     func configTextField(){
@@ -110,7 +119,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             curTextField = "bottom"
         }
         textField.becomeFirstResponder()
-        textField.text = ""
+        if imageView.image != nil {
+            textField.text = ""
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -166,17 +177,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     //MARK: generate meme image
     func generateMemedImage() -> UIImage {
         
-        // TODO: Hide toolbar and navbar
+        topBar.hidden = true
+        bottomBar.hidden = true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawViewHierarchyInRect(self.view.frame,
-            afterScreenUpdates: true)
-        let memedImage : UIImage =
-        UIGraphicsGetImageFromCurrentImageContext()
+        view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        // TODO:  Show toolbar and navbar
+        topBar.hidden = false
+        bottomBar.hidden = false
         
         return memedImage
     }
