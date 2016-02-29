@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe
 //
 //  Created by ying yang on 2/25/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     var curTextField = "top"
     var memeObject: Meme?
     
@@ -96,8 +96,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     func configTextField(){
-        topTextField.text = "top"
-        bottomTextField.text = "bottom"
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
         bottomTextField.contentHorizontalAlignment = .Center
         topTextField.contentHorizontalAlignment = .Center
         
