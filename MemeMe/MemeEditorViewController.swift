@@ -9,7 +9,6 @@
 import UIKit
 
 class MemeEditorViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
-    var memeObject: Meme?
     
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
@@ -30,8 +29,11 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
         avc.completionWithItemsHandler = {
             (activityType, completed, returnedItems, activityError) in
             if completed {
-                self.memeObject = Meme(topString: self.topTextField.text!, bottomString: self.bottomTextField.text!, originalImage: self.imageView.image!, memeImage: memeImg)
+                let memeObject = Meme(topString: self.topTextField.text!, bottomString: self.bottomTextField.text!, originalImage: self.imageView.image!, memeImage: memeImg)
                 self.dismissViewControllerAnimated(true, completion: nil)
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                appDelegate.meme.append(memeObject)
+                self.parentViewController?.dismissViewControllerAnimated(true, completion: nil)
             }
         }
     }
