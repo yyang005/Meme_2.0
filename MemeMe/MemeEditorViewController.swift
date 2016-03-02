@@ -30,10 +30,9 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
             (activityType, completed, returnedItems, activityError) in
             if completed {
                 let memeObject = Meme(topString: self.topTextField.text!, bottomString: self.bottomTextField.text!, originalImage: self.imageView.image!, memeImage: memeImg)
-                self.dismissViewControllerAnimated(true, completion: nil)
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 appDelegate.meme.append(memeObject)
-                self.parentViewController?.dismissViewControllerAnimated(true, completion: nil)
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
     }
@@ -43,7 +42,7 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
     }
     
     @IBAction func backToDefaultSetting(sender: AnyObject) {
-        resetUI()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func pickImageFromCamera(sender: AnyObject) {

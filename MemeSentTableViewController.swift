@@ -1,5 +1,5 @@
 //
-//  MemeSentViewController.swift
+//  MemeSentTableViewController.swift
 //  MemeMe
 //
 //  Created by ying yang on 2/29/16.
@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class MemeSentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MemeSentTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var meme: [Meme] {
@@ -17,8 +17,12 @@ class MemeSentViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     override func viewWillAppear(animated: Bool) {
-        let indexPaths = NSIndexPath(forRow: meme.count-1, inSection: 0)
-        tableView.insertRowsAtIndexPaths([indexPaths], withRowAnimation: .Fade)
+        super.viewWillAppear(animated)
+        if meme.count > 0 {
+            //let indexPaths = NSIndexPath(forRow: meme.count-1, inSection: 0)
+            //tableView.insertRowsAtIndexPaths([indexPaths], withRowAnimation: .Fade)
+            tableView.reloadData()
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,7 +33,13 @@ class MemeSentViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCellWithIdentifier("memeCell", forIndexPath: indexPath)
         cell.imageView!.image = meme[indexPath.row].memeImage
         cell.textLabel!.text = meme[indexPath.row].topString + meme[indexPath.row].bottomString
-        
+        cell.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("memeDetail") as! MemeDetailViewController
+        vc.image = meme[indexPath.row].memeImage
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
