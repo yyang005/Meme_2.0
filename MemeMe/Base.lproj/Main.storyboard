@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kg1-Tu-7hI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kg1-Tu-7hI">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -31,9 +31,6 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="64" width="400" height="536"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="v8s-lb-CYx" id="oL6-Sq-kwl"/>
                                     <outlet property="delegate" destination="v8s-lb-CYx" id="ukh-su-IZV"/>
@@ -41,14 +38,32 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kg1-Tu-7hI" firstAttribute="top" secondItem="Tt7-mh-guV" secondAttribute="bottom" id="Lc4-R7-2aA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kg1-Tu-7hI" secondAttribute="trailing" constant="-20" id="ieK-Is-Eca"/>
+                            <constraint firstItem="kg1-Tu-7hI" firstAttribute="leading" secondItem="v4h-jc-ptS" secondAttribute="leadingMargin" constant="-20" id="mtO-r1-EsD"/>
+                            <constraint firstItem="kg1-Tu-7hI" firstAttribute="bottom" secondItem="v4h-jc-ptS" secondAttribute="bottomMargin" id="vzB-iV-aw1"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="kg1-Tu-7hI"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Lc4-R7-2aA"/>
+                                <exclude reference="ieK-Is-Eca"/>
+                                <exclude reference="mtO-r1-EsD"/>
+                                <exclude reference="vzB-iV-aw1"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="kg1-Tu-7hI"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Lc4-R7-2aA"/>
+                                <include reference="ieK-Is-Eca"/>
+                                <include reference="mtO-r1-EsD"/>
+                                <include reference="vzB-iV-aw1"/>
                             </mask>
                         </variation>
                     </view>
@@ -257,14 +272,12 @@
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="vTc-Mi-0Yl">
                                 <rect key="frame" x="250" y="118" width="101" height="30"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ssR-Dk-p62">
                                 <rect key="frame" x="208" y="481" width="184" height="30"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>

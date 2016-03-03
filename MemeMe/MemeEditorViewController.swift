@@ -42,7 +42,7 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
     }
     
     @IBAction func backToDefaultSetting(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func pickImageFromCamera(sender: AnyObject) {
@@ -59,8 +59,6 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        topTextField.delegate = self
-        bottomTextField.delegate = self
         configTextField(topTextField)
         configTextField(bottomTextField)
     }
@@ -100,6 +98,7 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
             textField.text = "BOTTOM"
         }
         textField.contentHorizontalAlignment = .Center
+        textField.delegate = self
         
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
@@ -160,7 +159,7 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
     
     func keyboardWillHide(notification: NSNotification){
         if bottomTextField.isFirstResponder() {
-            view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y = 0
         }
     }
     

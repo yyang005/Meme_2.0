@@ -30,7 +30,8 @@ class MemeSentCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("memeDetail") as! MemeDetailViewController
         vc.image = meme[indexPath.item].memeImage
-        presentViewController(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+        self.tabBarController?.tabBar.hidden = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -39,6 +40,7 @@ class MemeSentCollectionViewController: UICollectionViewController {
             //let indexPaths = NSIndexPath(forItem: meme.count-1, inSection: 0)
             //memeSentCollectionView.insertItemsAtIndexPaths([indexPaths])
             memeSentCollectionView.reloadData()
+            self.tabBarController?.tabBar.hidden = false
         }
         
     }

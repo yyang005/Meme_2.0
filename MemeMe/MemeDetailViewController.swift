@@ -18,5 +18,6 @@ class MemeDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         imageView.image = image
+        imageView.contentMode = .ScaleAspectFit
     }
 }

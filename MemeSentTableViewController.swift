@@ -19,10 +19,9 @@ class MemeSentTableViewController: UIViewController, UITableViewDataSource, UITa
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if meme.count > 0 {
-            //let indexPaths = NSIndexPath(forRow: meme.count-1, inSection: 0)
-            //tableView.insertRowsAtIndexPaths([indexPaths], withRowAnimation: .Fade)
             tableView.reloadData()
         }
+        self.tabBarController?.tabBar.hidden = false
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,5 +40,6 @@ class MemeSentTableViewController: UIViewController, UITableViewDataSource, UITa
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("memeDetail") as! MemeDetailViewController
         vc.image = meme[indexPath.row].memeImage
         self.navigationController?.pushViewController(vc, animated: true)
+        self.tabBarController?.tabBar.hidden = true
     }
 }
