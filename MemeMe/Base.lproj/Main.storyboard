@@ -7,7 +7,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Meme Sent Table View Controller-->
+        <!--Sent Memes-->
         <scene sceneID="1pz-NS-D02">
             <objects>
                 <viewController id="v8s-lb-CYx" customClass="MemeSentTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -67,7 +67,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="Abk-wh-FvU">
+                    <navigationItem key="navigationItem" title="Sent Memes" id="Abk-wh-FvU">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Q1m-je-Q7V">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="presentation" id="lnM-UU-PQH"/>
@@ -82,7 +82,7 @@
             </objects>
             <point key="canvasLocation" x="1348.5" y="245"/>
         </scene>
-        <!--Meme Sent Collection View Controller-->
+        <!--Sent Memes-->
         <scene sceneID="Xmn-4V-hek">
             <objects>
                 <collectionViewController id="Bfl-1c-Idu" customClass="MemeSentCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -148,7 +148,7 @@
                             <outlet property="delegate" destination="Bfl-1c-Idu" id="Gmy-bV-5wP"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="z2B-jO-Kp9">
+                    <navigationItem key="navigationItem" title="Sent Memes" id="z2B-jO-Kp9">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="n1X-UY-AJw">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="presentation" id="KKp-hx-Bpe"/>
@@ -174,6 +174,7 @@
                         <viewControllerLayoutGuide type="bottom" id="p69-yk-zHD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="V5L-u4-OoM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="avf-98-pUF">
@@ -192,10 +193,10 @@
                                 <exclude reference="avf-98-pUF"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="hJ7-wa-6u0"/>
                                 <exclude reference="QI5-PV-f9g"/>
                                 <exclude reference="Qd8-Nc-4Y4"/>
                                 <exclude reference="s6p-KO-87G"/>
-                                <exclude reference="hJ7-wa-6u0"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -203,10 +204,10 @@
                                 <include reference="avf-98-pUF"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="hJ7-wa-6u0"/>
                                 <include reference="QI5-PV-f9g"/>
                                 <include reference="Qd8-Nc-4Y4"/>
                                 <include reference="s6p-KO-87G"/>
-                                <include reference="hJ7-wa-6u0"/>
                             </mask>
                         </variation>
                     </view>
