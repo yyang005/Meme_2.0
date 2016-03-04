@@ -18,9 +18,8 @@ class MemeSentTableViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if meme.count > 0 {
-            tableView.reloadData()
-        }
+        
+        tableView.reloadData()
         self.tabBarController?.tabBar.hidden = false
     }
     
