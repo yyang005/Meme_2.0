@@ -42,4 +42,12 @@ class MemeSentTableViewController: UIViewController, UITableViewDataSource, UITa
         self.navigationController?.pushViewController(vc, animated: true)
         self.tabBarController?.tabBar.hidden = true
     }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == .Delete) {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.meme.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+    }
 }

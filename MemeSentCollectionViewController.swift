@@ -36,13 +36,8 @@ class MemeSentCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if meme.count > 0 {
-            //let indexPaths = NSIndexPath(forItem: meme.count-1, inSection: 0)
-            //memeSentCollectionView.insertItemsAtIndexPaths([indexPaths])
             memeSentCollectionView.reloadData()
             self.tabBarController?.tabBar.hidden = false
-        }
-        
     }
     
     override func viewDidLoad() {
